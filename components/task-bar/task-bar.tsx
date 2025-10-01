@@ -26,18 +26,6 @@ export default function TaskBar() {
               </div>
               
               <div className={styles.startMenuContent}>
-                <a href="mailto:hello@adhamshams.com" className={styles.menuItem}>
-                  <Image src={"/mail.webp"} alt="Email" width={25} height={25} />
-                  <span>hello@adhamshams.com</span>
-                </a>
-
-                <a href="https://www.linkedin.com/in/adhamshams" target="_blank" rel="noopener noreferrer" className={styles.menuItem}>
-                  <Image src={"/internet.webp"} alt="LinkedIn" width={25} height={25} />
-                  <span>LinkedIn Profile</span>
-                </a>
-                
-                <div className={styles.menuSeparator}></div>
-                
                 <a href="/" className={styles.menuItem}>
                   <Image src={"/switch.webp"} alt="About" width={25} height={25} />
                   <span>Switch User</span>

@@ -5,6 +5,7 @@ import Evidence from "@/components/evidence/folder";
 import { ZIndexProvider } from "@/contexts/ZIndexContext";
 
 import Image from "next/image";
+import Murderer from "@/components/murderer/murderer";
 
 export default function Desktop() {
     return (
@@ -15,10 +16,10 @@ export default function Desktop() {
                     alt="Background"
                     className={styles.backgroundImage}
                     fill
-                    loading="eager"
                 />
                 <Article />
                 <Evidence />
+                <Murderer />
                 <TaskBar />
             </div>
         </ZIndexProvider>

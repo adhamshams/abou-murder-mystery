@@ -17,6 +17,10 @@ export default function BrewBuzz() {
   const [showThumbnail, setShowThumbnail] = useState(false);
   const [showAudio, setShowAudio] = useState(false);
   const [showShipping, setShowShipping] = useState(false);
+  const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
   const { getNextZIndex } = useZIndex();
 
   useEffect(() => {
@@ -64,16 +68,75 @@ export default function BrewBuzz() {
     setTimeout(() => {
       setVisible(false);
       setIsClosing(false);
+      setIsAuthenticated(false);
+      setPassword("");
+      setPasswordError(false);
     }, 200); // Match the animation duration
+  };
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === "22") {
+      setIsAuthenticated(true);
+      setShowPasswordPrompt(false);
+      setVisible(true);
+      setPasswordError(false);
+      setPassword("");
+    } else {
+      setPasswordError(true);
+      setPassword("");
+    }
+  };
+
+  const handleFolderClick = () => {
+    if (!isAuthenticated) {
+      setShowPasswordPrompt(true);
+    } else {
+      setVisible(true);
+    }
   };
 
   return (
     <div>
-      <div className={styles.icon} onClick={() => setVisible(true)}>
+      <div className={styles.icon} onClick={handleFolderClick}>
         <Image src={"/folder.webp"} alt="Logo" width={45} height={45} />
         <h2>Evidence</h2>
       </div>
-      {visible && (
+      
+      {showPasswordPrompt && (
+        <div className={styles.passwordOverlay}>
+          <div className={styles.passwordPrompt}>
+            <h3>Enter Password</h3>
+            <form onSubmit={handlePasswordSubmit}>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                className={styles.passwordInput}
+                autoFocus
+              />
+              {passwordError && <p className={styles.error}>Incorrect password!</p>}
+              <div className={styles.passwordButtons}>
+                <button type="submit" className={styles.submitBtn}>OK</button>
+                <button 
+                  type="button" 
+                  onClick={() => {
+                    setShowPasswordPrompt(false);
+                    setPassword("");
+                    setPasswordError(false);
+                  }}
+                  className={styles.cancelBtn}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {visible && isAuthenticated && (
         <div ref={boxRef} onMouseDown={() => {
           // Bring this component to front
           const newZIndex = getNextZIndex();

@@ -24,15 +24,15 @@
 
 .container {
     position: absolute;
-    top: 20%;
-    left: 25%;
-    width: 50vw;
+    bottom: 18%;
+    left: 40%;
+    width: 35vw;
     height: 60vh;
     border: 1px solid #025aee;
     background-color: #025aee;
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
     animation: scaleIn 0.2s ease-out forwards;
     transform-origin: center;
 }
@@ -94,106 +94,112 @@
 
 .canvas {
     background-color: #fff;
+    overflow: scroll;
     flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
     padding: 20px;
-    gap: 12px;
 }
 
-.subIcon {
-    display: inline-flex;
+.about {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #000;
     gap: 12px;
-    cursor: pointer;
-    padding: 8px 0;
-    width: 120px;
-    user-select: none;
 }
 
-.subIcon:hover {
-    background-color: rgba(105, 105, 105, 0.2);
+.about h2 {
+    font-size: 16px;
+    color: #000;
 }
 
-.subIcon p {
-    font-size: 12px;
+.about .role {
+    font-size: 14px;
+    color: #474747;
+    text-decoration: underline;
 }
 
-.passwordOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-}
-
-.passwordPrompt {
-    background-color: #c0c0c0;
-    border: 2px outset #c0c0c0;
-    padding: 20px;
-    border-radius: 0;
-    min-width: 300px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.passwordPrompt h3 {
-    margin: 0 0 15px 0;
+.about p {
     font-size: 14px;
     color: #000;
-    font-weight: normal;
 }
 
-.passwordInput {
-    width: 100%;
-    padding: 4px;
-    border: 1px inset #c0c0c0;
-    background-color: white;
-    font-size: 12px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
+.suspectsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.passwordInput:focus {
-    outline: none;
-    border: 1px inset #0078d4;
-}
-
-.error {
-    color: red;
-    font-size: 12px;
-    margin: 5px 0;
-}
-
-.passwordButtons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.submitBtn, .cancelBtn {
-    padding: 6px 16px;
-    font-size: 12px;
-    border: 1px outset #c0c0c0;
-    background-color: #c0c0c0;
+.suspectCard {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
     cursor: pointer;
-    min-width: 60px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.submitBtn:hover, .cancelBtn:hover {
-    background-color: #e0e0e0;
+.suspectCard:hover {
+    border-color: #025aee;
 }
 
-.submitBtn:active, .cancelBtn:active {
-    border: 1px inset #c0c0c0;
+.suspectImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #025aee;
+}
+
+.suspectImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.suspectInfo {
+    text-align: center;
+}
+
+.suspectName {
+    font-size: 14px;
+    font-weight: bold;
+    color: #212529;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+}
+
+.suspectOccupation {
+    font-size: 12px;
+    color: #6c757d;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.instructions {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.instructions p {
+    margin: 0;
+    font-size: 14px;
+    color: #495057;
 }
